@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.twspring.exercisejpa.Model.Category;
 import org.twspring.exercisejpa.Repository.CategoryRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,7 +19,7 @@ public class CategoryService {
     public Category getCategory(Integer id) {
         //Makes sure it returns null if no object with the id exists
         if (categoryRepository.findById(id).isPresent()) {
-           return categoryRepository.getById(id);
+            return categoryRepository.getById(id);
         }
         return null;
     }
@@ -29,7 +28,7 @@ public class CategoryService {
         categoryRepository.save(category);
     }
 
-    public boolean updateCategory(int id, Category category) {
+    public boolean updateCategory(Integer id, Category category) {
         Category updatedCategory = getCategory(id);
         if (updatedCategory == null) {
             return false;
@@ -39,12 +38,12 @@ public class CategoryService {
         return true;
     }
 
-    public boolean deleteCategory(int id) {
-        Category updatedCategory = getCategory(id);
-        if (updatedCategory == null) {
+    public boolean deleteCategory(Integer id) {
+        Category category = getCategory(id);
+        if (category == null) {
             return false;
         }
-        categoryRepository.delete(updatedCategory);
+        categoryRepository.delete(category);
         return true;
     }
 }

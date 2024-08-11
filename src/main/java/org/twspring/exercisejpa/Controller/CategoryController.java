@@ -60,7 +60,7 @@ public class CategoryController {
 
     //=======================================UPDATE=======================================
     @PutMapping("update/category/{id}")
-    public ResponseEntity updateCategory(@PathVariable int id,@Valid @RequestBody Category category, Errors errors){
+    public ResponseEntity updateCategory(@PathVariable Integer id,@Valid @RequestBody Category category, Errors errors){
         if (errors.hasErrors()) {
             String message = errors.getFieldError().getDefaultMessage();
             return ResponseEntity.status(400).body(new ApiResponse(message));
@@ -74,7 +74,7 @@ public class CategoryController {
     //=======================================DELETE=======================================
 
     @DeleteMapping("delete/category/{id}")
-    public ResponseEntity deleteCategory(@PathVariable int id){
+    public ResponseEntity deleteCategory(@PathVariable Integer id){
         boolean isDeleted = categoryService.deleteCategory(id);
         if (isDeleted) {
             return ResponseEntity.status(201).body(new ApiResponse("Category deleted successfully"));

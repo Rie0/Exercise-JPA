@@ -21,7 +21,7 @@ public class User {
 
     @Column(columnDefinition = "varchar(25) not null unique")
     @NotEmpty(message = "Username cannot be empty")
-    @Size(min=6, max=25, message = "Username must have between 6 and 25 characters")
+    @Size(min=4, max=25, message = "Username must have between 4 and 25 characters")
     private String username;
 
     @Column(columnDefinition = "varchar(25) not null")
@@ -42,14 +42,12 @@ public class User {
     @Size(min= 4, max = 25, message = "Role must have between 4 to 25 characters")
     private String role;
 
-    @Column(columnDefinition = "double(6,2) not null")
+    @Column(columnDefinition = "double not null")
     @NotNull(message = "Balance cannot be empty")
     @Positive(message = "Balance must be a positive number")
-    @Max(value = 999999, message = "Balance cannot be greater than 999999")
     private double balance;
 
     @Column(columnDefinition = "boolean not null default false")
     @NotNull(message = "Is prime member cannot be empty")
-    @AssertFalse(message = "New members cannot have prime membership")
     private boolean isPrimeMember;
 }

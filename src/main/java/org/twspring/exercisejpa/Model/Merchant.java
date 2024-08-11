@@ -23,6 +23,5 @@ public class Merchant {
 
     @Column(columnDefinition = "boolean not null default false")
     @NotNull(message = "Certified cannot be null")
-    @AssertFalse(message = "Certified must be initiated at false")
     private boolean certified;
 }

@@ -21,10 +21,9 @@ public class Product {
     @Size(min=4,max=25, message = "Name must be between 4 to 25 characters")
     private String name;
 
-    @Column(columnDefinition = "double(6,2) not null")
+    @Column(columnDefinition = "double not null")
     @NotNull(message = "Price cannot be empty")
     @Positive(message = "Price must be greater than 0")
-    @Max(value = 999999, message = "Price cannot be greater than 999999")
     private double price;
 
     @Column(columnDefinition = "int not null")
@@ -35,17 +34,17 @@ public class Product {
 
     @Column(columnDefinition = "boolean not null default false")
     @NotNull(message = "On sale cannot be null")
-    @AssertFalse(message = "On sale must be initiated to false")
     private boolean onSale;
 
     @Column(columnDefinition = "int not null default 0")
     @NotNull(message = "Number of reviews cannot be null")
-    @Range(min=0,max=0, message = "Number of reviews must be 0 at creation")
+    @PositiveOrZero(message ="Number of reviews cannot be a negative number" )
+    @Range(min=0, message = "Number of reviews cannot be less than 0")
     private Integer numberOfReview;
 
-    @Column(columnDefinition = "double(2,2) not null default 0")
+    @Column(columnDefinition = "double not null default 0")
     @NotNull(message = "Average score cannot be null")
-    @Range(min=0,max=0, message = "Products must have 0 score at creation")
+    @Range(min=0,max=5, message = "Products have a review range of 1 to 5")
     @Max(value = 5, message = "Average score cannot be greater than 5")
     private double averageScore;
 }
